@@ -1,5 +1,11 @@
 # N3 — análises finais e prontidão para publicação
 
+Atualização para apresentação: o código-base já foi publicado em `6300343` e
+reproduzido em clone isolado; a fonte Kaggle foi identificada por verificação
+externa. Ver `docs/RELATORIO_PREPARACAO_APRESENTACAO.md` e `docs/ORIGEM_DATASET.md`.
+A seleção atual passou a 42 arquivos, com evidências pequenas. Os diagnósticos
+abaixo preservam a situação histórica antes dessas atualizações, não a situação atual.
+
 ## Atualização documental de reprodução — 17/11/2026
 
 README, preparação de publicação, manifesto e este relatório foram reinspecionados.

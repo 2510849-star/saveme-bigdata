@@ -1,0 +1,29 @@
+{
+  "copia_sem_edicao": true,
+  "graficos": [
+    {
+      "arquivo": "ranking_avaliacoes.png",
+      "origem_relativa": "outputs/analises/ranking_avaliacoes.png",
+      "sha256": "055f0a3aa6a153869dd3be57e3f57a9b8878295608074f105e130a2adf0b4633",
+      "bytes": 99174
+    },
+    {
+      "arquivo": "distribuicao_precos.png",
+      "origem_relativa": "outputs/analises/distribuicao_precos.png",
+      "sha256": "c81c37986b87a2d5ede121709799ac5e3bc8959689570ff8eab19c429ae32da8",
+      "bytes": 64458
+    },
+    {
+      "arquivo": "generos_frequentes.png",
+      "origem_relativa": "outputs/analises/generos_frequentes.png",
+      "sha256": "299faf5432c773e8c5d926c0d606dd442ae43440c23d013c98a564f42ffb4681",
+      "bytes": 64095
+    },
+    {
+      "arquivo": "ranking_popularidade.png",
+      "origem_relativa": "outputs/analises/ranking_popularidade.png",
+      "sha256": "3ef205d40bcbe8a1f9dd3984681a24cacb3e63c3a9622e8117f66d650f748409",
+      "bytes": 103215
+    }
+  ]
+}

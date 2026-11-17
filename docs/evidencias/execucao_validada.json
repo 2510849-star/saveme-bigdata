@@ -1,0 +1,112 @@
+{
+  "capturado_em_utc": "2026-11-17T16:46:39.665724+00:00",
+  "commit_fonte_validado": "6300343d6bb7e16015b7f0f327ecc50d6138a5be",
+  "ambiente_captura": {
+    "banco": "saveme_analytics",
+    "colecao": "jogos_analiticos",
+    "porta_local": 27018,
+    "natureza": "instancia MongoDB real isolada de reproducao"
+  },
+  "verificacao_atual": {
+    "total_documentos": 89618,
+    "appid_distintos": 89618,
+    "grupos_appid_duplicados": 0,
+    "indice_appid_unico": true
+  },
+  "generos_top_5_consultados": [
+    {
+      "_id": "Indie",
+      "jogos": 63189
+    },
+    {
+      "_id": "Casual",
+      "jogos": 38699
+    },
+    {
+      "_id": "Action",
+      "jogos": 36842
+    },
+    {
+      "_id": "Adventure",
+      "jogos": 35452
+    },
+    {
+      "_id": "Simulation",
+      "jogos": 18570
+    }
+  ],
+  "indicadores": {
+    "jogos": 89618,
+    "avaliacoes_validas": 89618,
+    "jogos_sem_avaliacoes": 17055,
+    "jogos_elegiveis_ranking_percentual": 20162,
+    "precos_zero": 14160,
+    "free_to_play_explicitos": 8867,
+    "preco_zero_sem_f2p_explicito": 5365,
+    "com_desconto": 7454,
+    "percentual_com_desconto": 8.317525497109955,
+    "sem_desconto": 82164,
+    "desconto_medio_entre_descontados": 54.807485913603436,
+    "registros_relacao_preco_avaliacao": 72563,
+    "excluidos_relacao_preco_avaliacao": 17055,
+    "correlacao_pearson": 0.003997671560283704,
+    "correlacao_spearman": 0.047841613248128266,
+    "picos_validos": 89618,
+    "totais_persistidos_divergentes": 0,
+    "taxas_persistidas_divergentes": 0,
+    "nulos_ou_invalidos_por_campo": {
+      "preco": 0,
+      "desconto": 0,
+      "positivas": 0,
+      "negativas": 0,
+      "pico": 0
+    }
+  },
+  "testes_reexecutados": {
+    "quantidade": 70,
+    "codigo_saida": 0,
+    "duracao_com_processo_segundos": 8.2082561,
+    "comando": ".venv/Scripts/python.exe -X utf8 -W error::ResourceWarning -m unittest discover -s tests -v"
+  },
+  "carga_inicial_e_idempotencia": {
+    "natureza": "evidencia de execucao anterior na reproducao limpa; carga NAO reexecutada nesta preparacao",
+    "colecao_antes": 0,
+    "cargas": [
+      {
+        "execucao": 1,
+        "inseridos": 89618,
+        "atualizados": 0,
+        "inalterados": 0,
+        "rejeitados": 0,
+        "duracao_segundos": 123.793
+      },
+      {
+        "execucao": 2,
+        "inseridos": 0,
+        "atualizados": 0,
+        "inalterados": 89618,
+        "rejeitados": 0,
+        "duracao_segundos": 131.159
+      }
+    ],
+    "idempotencia_comprovada": true,
+    "sha256_bson_apos_as_duas_cargas": "f81722cbcb107cfa3b8df2ff01ddce6a91d9feb4832f7ed7a67fe8931ea3df1b",
+    "executado_em_utc": "2026-11-17T07:38:52.956410+00:00",
+    "duracao_com_consultas_segundos": 323.872,
+    "sha256_csv": "04d8df2778aaa8f8b575934b7072d55224d37a2ded23e8261583f0fcf668dfab"
+  },
+  "reproducao": {
+    "testes": 70,
+    "csvs": 15,
+    "pngs": 14,
+    "resumos_analiticos": 3,
+    "csvs_iguais_ao_original": true,
+    "classificacao": "APROVADA COM RESSALVAS"
+  },
+  "preservacao_desta_coleta": {
+    "sha256_bson_antes": "f81722cbcb107cfa3b8df2ff01ddce6a91d9feb4832f7ed7a67fe8931ea3df1b",
+    "sha256_bson_depois": "f81722cbcb107cfa3b8df2ff01ddce6a91d9feb4832f7ed7a67fe8931ea3df1b",
+    "colecao_inalterada": true,
+    "indices_inalterados": true
+  }
+}

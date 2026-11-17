@@ -28,3 +28,15 @@ CHECKLIST_ENTREGA_N3.md
 RELATORIO_FINAL_PUBLICACAO.md
 PREPARACAO_PUBLICACAO.md
 ARQUIVOS_PUBLICACAO.txt
+docs/ORIGEM_DATASET.md
+docs/ROTEIRO_DEMONSTRACAO_N3.md
+docs/RELATORIO_PREPARACAO_APRESENTACAO.md
+docs/evidencias/README.md
+docs/evidencias/ranking_avaliacoes.png
+docs/evidencias/distribuicao_precos.png
+docs/evidencias/generos_frequentes.png
+docs/evidencias/ranking_popularidade.png
+docs/evidencias/documentos_reais.json
+docs/evidencias/execucao_validada.json
+docs/evidencias/graficos_proveniencia.json
+docs/evidencias/correspondencia_dataset.json

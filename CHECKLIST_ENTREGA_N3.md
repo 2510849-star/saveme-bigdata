@@ -15,7 +15,10 @@ Não houve commit/push nesta etapa. Pendências semânticas e de cobertura estã
 - [x] README com ambiente, Compose, conexão, carga, testes e análises.
 - [x] PDF N2 organizado em docs/, com leitura integral e auditoria por página.
 - [x] `.env`, `.venv/`, dados e outputs ignorados; `.env.example` sem credenciais.
-- [ ] Documentar URL exata de obtenção do CSV no Kaggle e condições de uso.
+- [x] Identificar fonte e versão Kaggle, licença declarada e procedimento de obtenção,
+      com metadados/tamanho/cabeçalho e amostras HTTP. Ver docs/ORIGEM_DATASET.md.
+- [ ] Conferir SHA-256 de um novo download integral a partir do Kaggle; a reprodução
+      já aprovada utilizou uma cópia autorizada do arquivo original.
 - [ ] Confirmar unidades, datas exatas dos períodos e semântica dos zeros/-1.
 - [x] Completar e executar ranking de positivas, faixas de proprietários e
       comparação de características por gênero, com limites de interpretação.
@@ -26,19 +29,20 @@ Lista exata: `ARQUIVOS_PUBLICACAO.txt`. Comandos preparados:
 `PREPARACAO_PUBLICACAO.md`. Revisão de segurança e resultados:
 `RELATORIO_FINAL_PUBLICACAO.md`. Nada foi adicionado ao índice nesta preparação.
 
-- [ ] Revisar todos os arquivos novos, incluindo PDF e relatórios. No estado auditado,
-      apenas `.gitignore` e `analise_dataset.py` estavam rastreados pelo Git.
+- [ ] Revisar a atualização dos 42 candidatos, incluindo quatro gráficos pequenos
+      e exemplos minimizados. Os 30 arquivos-base já estão publicados em `6300343`;
+      estas novas evidências ainda precisam de commit/push após autorização.
 - [ ] Definir a seleção de arquivos da entrega: scripts, requirements, compose,
       `.env.example`, README, testes, PDF e relatórios Markdown.
-- [ ] Incluir uma amostra pequena de resultados/evidências se exigida pelo professor;
-      outputs completos estão ignorados e não serão publicados automaticamente.
+- [x] Preparar quatro gráficos, resumo, duas projeções reais minimizadas e evidências
+      de carga/testes em docs/evidencias/. Outputs completos permanecem ignorados.
 - [ ] Revisar conteúdo para credenciais e dados desnecessários antes de adicionar.
 - [ ] Após autorização, fazer commit e push e conferir o conteúdo efetivamente
       publicado. Estes passos estão pendentes por solicitação explícita do usuário.
 - [ ] Verificar acesso do professor e copiar a URL correta do repositório.
-- [ ] Em um clone limpo separado, seguir somente o README, obter o CSV documentado,
-      criar ambiente e reproduzir testes, carga e análises. Isso ainda não foi testado
-      num clone independente; executar no workspace atual não comprova esse item.
+- [x] Executar o commit publicado em clone/venv/MongoDB independentes: 70 testes,
+      89.618 documentos, idempotência e 15 CSVs iguais, com as ressalvas registradas.
+      O CSV veio de cópia autorizada; obtenção autônoma pela fonte é a pendência acima.
 
 ## Roteiro de demonstração
 

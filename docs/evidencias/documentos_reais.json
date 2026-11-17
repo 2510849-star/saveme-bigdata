@@ -1,0 +1,72 @@
+{
+  "capturado_em_utc": "2026-11-17T16:46:39.665724+00:00",
+  "fonte": "MongoDB real, instancia isolada de reproducao em 27018",
+  "banco": "saveme_analytics",
+  "colecao": "jogos_analiticos",
+  "privacidade": "Projecao minimizada: sem _id interno, contatos, URLs, descricoes ou dados de usuarios. appid e nome sao metadados publicos de jogos, preservados sem inventar valores.",
+  "documentos": [
+    {
+      "appid": 730,
+      "nome": "Counter-Strike 2",
+      "lancamento": {
+        "data_iso": "2012-08-21"
+      },
+      "catalogo": {
+        "generos": [
+          "Action",
+          "Free To Play"
+        ],
+        "free_to_play_explicito": true
+      },
+      "preco": {
+        "valor": 0.0,
+        "desconto_percentual": 0
+      },
+      "avaliacoes": {
+        "positivas": 7480813,
+        "negativas": 1135108,
+        "total": 8615921,
+        "taxa_positivas_percentual": 86.82545951848908
+      },
+      "popularidade": {
+        "pico_jogadores_simultaneos": 1212356
+      },
+      "origem": {
+        "plataforma": "Steam",
+        "mes_referencia": "2025-03",
+        "arquivo": "games_march2025_cleaned.csv"
+      }
+    },
+    {
+      "appid": 12370,
+      "nome": "Jagged Alliance 2 Gold",
+      "lancamento": {
+        "data_iso": "2006-07-06"
+      },
+      "catalogo": {
+        "generos": [
+          "Strategy"
+        ],
+        "free_to_play_explicito": false
+      },
+      "preco": {
+        "valor": 19.99,
+        "desconto_percentual": 0
+      },
+      "avaliacoes": {
+        "positivas": 0,
+        "negativas": 0,
+        "total": 0,
+        "taxa_positivas_percentual": null
+      },
+      "popularidade": {
+        "pico_jogadores_simultaneos": 14
+      },
+      "origem": {
+        "plataforma": "Steam",
+        "mes_referencia": "2025-03",
+        "arquivo": "games_march2025_cleaned.csv"
+      }
+    }
+  ]
+}

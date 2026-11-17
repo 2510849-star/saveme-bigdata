@@ -7,15 +7,23 @@ da aplicação, com coleção `jogos_analiticos` identificada por `appid`.
 A carga, a idempotência e as análises já foram demonstradas em MongoDB real.
 Para reproduzir, é necessário um servidor MongoDB acessível.
 
-## Origem do CSV — bloqueio de reprodução externa
+Código publicado: [GitHub — saveme-bigdata](https://github.com/2510849-star/saveme-bigdata),
+branch `main`, revisão validada `6300343`. As evidências/documentação desta
+preparação ainda não foram enviadas ao remoto.
 
-A N2 identifica **Steam Games Dataset**, obtido no **Kaggle**, referente a
-**março de 2025**, arquivo `games_march2025_cleaned.csv`. **A URL exata não foi
-documentada e precisa ser fornecida pelo grupo. Nenhuma URL foi presumida.**
-O grupo deve informar o link, autor/identificador do dataset, versão/data de
-download e os passos para obter especificamente esse arquivo. Se o arquivo
-disponibilizado pelo Kaggle exigir preparação prévia, documentar também como
-chegar à versão usada. Não substituir silenciosamente por outro dataset/release.
+## Origem do CSV — identificação verificada
+
+Fonte identificada: [Steam Games Dataset 2025, versão 2 no Kaggle](https://www.kaggle.com/datasets/artermiloff/steam-games-dataset/versions/2),
+referência `artermiloff/steam-games-dataset`. O catálogo exibe Artemiy Ermilov,
+atualização de 13/03/2025 e licença declarada MIT para o dataset. O arquivo é
+`games_march2025_cleaned.csv`, referente a março de 2025; não escolher o `full`
+nem o snapshot de maio de 2024.
+
+A investigação confirmou nome, tamanho exato, cabeçalho de 47 colunas e igualdade
+dos primeiros/últimos 64 KiB remotos com o arquivo local. Não foi repetido download
+remoto integral nesta preparação; conferir sempre o SHA-256 após obter o arquivo.
+[Origem, fontes primárias e instruções](docs/ORIGEM_DATASET.md) e
+[registro da correspondência](docs/evidencias/correspondencia_dataset.json).
 
 Referência do arquivo efetivamente validado:
 
@@ -23,11 +31,20 @@ Referência do arquivo efetivamente validado:
 - Tamanho: **468.641.107 bytes**, **89.618 registros e 47 colunas**.
 - SHA-256: `04d8df2778aaa8f8b575934b7072d55224d37a2ded23e8261583f0fcf668dfab`.
 
-Um clone do repositório **não contém o CSV**. Sem o link e as instruções do grupo,
-uma pessoa sem acesso ao arquivo original não consegue reproduzir o processamento.
-O PDF N2 não fornece esse link exato.
+Um clone do repositório **não contém o CSV**. Obter o arquivo da versão identificada,
+extrair se necessário e colocá-lo em `data/`, sem sobrescrever a cópia original
+validada. A lacuna de URL foi resolvida pela pesquisa; a confirmação integral de
+um novo download continua sendo o hash acima. A data do download inicial pelo
+grupo não foi reconstruída nem inventada.
 
-## Reprodução em ambiente limpo — roteiro preparado, ainda não comprovado
+## Reprodução em ambiente limpo — executada com ressalvas
+
+O commit `6300343` foi clonado e executado com nova venv e MongoDB independente
+em 27018: 70 testes, carga inicial de 89.618 documentos, segunda carga sem
+modificações e 15 CSVs iguais aos originais. Foram gerados 14 PNGs e três resumos.
+[Evidência compacta da execução](docs/evidencias/execucao_validada.json).
+O CSV desse ensaio foi fornecido por cópia autorizada; a obtenção integral do
+Kaggle não foi repetida. Os passos abaixo são o procedimento para uma nova reprodução.
 
 Roteiro para **Windows/PowerShell**, em outra máquina/VM ou ambiente independente.
 Requer Git, instalação completa de **Python 3.12**, Docker com Compose e Engine
@@ -40,7 +57,8 @@ de reprodução bit a bit, distinta da reprodução funcional esperada.
 
 ### 1. Obter o código publicado e instalar as dependências
 
-Após a publicação dos 30 arquivos, executar em uma pasta nova, fora do workspace
+Após a publicação da atualização de evidências (42 arquivos selecionados), executar
+em uma pasta nova, fora do workspace
 original. O primeiro comando pede a URL real, sem presumir o endereço do grupo:
 
 ```powershell
@@ -59,19 +77,19 @@ if ($LASTEXITCODE -ne 0) { throw 'Falha ao instalar dependencias' }
 Conferir Python 3.12 antes de criar o ambiente. Se `python` for um atalho
 indisponível do Windows, usar o caminho de uma instalação completa. Não é
 necessário ativar a `.venv` nem alterar a política de execução do PowerShell.
-Enquanto não houver commit/push dos candidatos, um clone de `origin` ainda não
-recebe os scripts novos; não usar esse clone incompleto para declarar reprodução.
+O commit publicado `6300343` contém os scripts do pipeline e análises. As novas
+evidências e a documentação desta apresentação ainda não foram commitadas/enviadas;
+conferir o conteúdo efetivamente publicado ao repetir o clone.
 
 ### 2. Obter o CSV e conferir integridade
 
-**Ponto de parada:** obter do grupo o link/versão/instruções acima, baixar o
-arquivo legítimo e colocá-lo no caminho indicado. O roteiro não faz download de
-URL desconhecida. Depois, conferir:
+Obter o arquivo específico da versão 2 seguindo [estas instruções](docs/ORIGEM_DATASET.md).
+Não usar outro arquivo para contornar uma divergência de hash. Depois, conferir:
 
 ```powershell
 New-Item -ItemType Directory -Path data -Force | Out-Null
 if (-not (Test-Path -LiteralPath 'data/games_march2025_cleaned.csv' -PathType Leaf)) {
-    throw 'CSV ausente; solicitar ao grupo o link exato do Kaggle e as instrucoes'
+    throw 'CSV ausente; obter o arquivo da versao 2 indicada em docs/ORIGEM_DATASET.md'
 }
 $hashCsvEsperado = '04d8df2778aaa8f8b575934b7072d55224d37a2ded23e8261583f0fcf668dfab'
 $hashCsvObtido = (Get-FileHash -LiteralPath 'data/games_march2025_cleaned.csv' -Algorithm SHA256).Hash
@@ -134,8 +152,9 @@ Executar cada linha somente após a anterior terminar com código 0. Critérios:
   de tratamento/carga. Hashes da coleção antes/depois de cada análise iguais.
 - Em outro banco os ObjectIds serão diferentes: comparar hashes de estado
   **dentro da mesma reprodução**, não exigir o hash BSON do banco original.
-- Registrar ambiente, comandos, duração, erros e resultados. Este roteiro foi
-  revisado, mas **a execução integral em clone limpo ainda não foi realizada**.
+- Registrar ambiente, comandos, duração, erros e resultados. A reprodução funcional
+  já passou com as ressalvas acima; isso não comprova outro sistema operacional,
+  obtenção integral do Kaggle ou desempenho igual em qualquer máquina.
 
 Para apenas parar o serviço do ensaio, preservando dados, usar
 `docker compose -p saveme-n3-reproducao stop`. A reprodução não exige remoção de
@@ -534,3 +553,21 @@ confirmada, gêneros multivalorados e amostras diferentes limitam a interpretaç
 Ver `RELATORIO_FINAL_PUBLICACAO.md` para números e revisão de publicação.
 `ARQUIVOS_PUBLICACAO.txt` contém a lista fechada de arquivos; os comandos
 preparados, ainda não executados, estão em `PREPARACAO_PUBLICACAO.md`.
+
+## Apresentação N3 — evidências e roteiro
+
+- [Roteiro de 8 a 12 minutos, comandos e perguntas do professor](docs/ROTEIRO_DEMONSTRACAO_N3.md).
+- [Resumo curto, resultados reais e 70 testes](docs/evidencias/README.md).
+- [Carga inicial, segunda execução idempotente e verificação atual](docs/evidencias/execucao_validada.json).
+- [Dois documentos reais minimizados, sem dados privados](docs/evidencias/documentos_reais.json).
+- Gráficos selecionados: [avaliações](docs/evidencias/ranking_avaliacoes.png),
+  [preços](docs/evidencias/distribuicao_precos.png),
+  [gêneros](docs/evidencias/generos_frequentes.png),
+  [popularidade](docs/evidencias/ranking_popularidade.png).
+- [Origem e obtenção do dataset](docs/ORIGEM_DATASET.md).
+- [Relatório desta preparação](docs/RELATORIO_PREPARACAO_APRESENTACAO.md).
+
+As quatro imagens são cópias pequenas das saídas reais de `outputs/`, com hashes
+de proveniência. Outputs completos continuam ignorados. A apresentação deve
+distinguir consulta ao vivo de evidência de execução anterior, especialmente
+se Docker ou internet falharem. Não é necessário repetir toda a carga no palco.
